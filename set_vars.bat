@@ -1,8 +1,8 @@
 @rem Coin to download - change these for altcoins
-@set COINARCHIVE=bitcoin-0.11.2.tar.gz
-@set COINDOWNLOADPATH=https://bitcoin.org/bin/bitcoin-core-0.11.2/%COINARCHIVE%
+@set COINARCHIVE=3.1.1.tar.gz
+@set COINDOWNLOADPATH=https://github.com/buzzcoin-project/BUZZ/archive/%COINARCHIVE%
 @rem folder within COINARCHIVE
-@set COINFOLDER=bitcoin-0.11.2
+@set COINFOLDER=BUZZ-3.1.1
 
 @rem MinGW (MSYS)
 @set MINGWDLPATH=https://sourceforge.net/projects/mingw/files/Installer/mingw-get-setup.exe/download
@@ -43,15 +43,15 @@
 @set PATH=%MINGW64PATH%/bin;%MSYSPATH%
 
 @rem Dependencies
-@set OPENSSL=openssl-1.0.1p
+@set OPENSSL=openssl-1.0.1b
 @set BERKELEYDB=db-4.8.30.NC
-@set BOOSTSUBVERSION=58
+@set BOOSTSUBVERSION=47
 @set BOOST=boost_1_%BOOSTSUBVERSION%_0
 @set BOOSTVERSION=1.%BOOSTSUBVERSION%.0
-@set MINIUPNPC=miniupnpc-1.9.20151008
+@set MINIUPNPC=miniupnpc-1.6.20120509
 @set PROTOBUF=2.6.1
 @rem gtest is needed by protobuf
-@set GTEST=gtest-1.7.0
+@set GTEST=release-1.7.0
 @set LIBPNG=libpng-1.6.16
 @set LIBEVENT=2.0.22
 

@@ -1,4 +1,4 @@
-@echo EasyWinBuilder v0.7
+@echo EasyWinBuilder v0.7 BUZZ Version (nlz)
 @echo.
 @set RUNALL=1
 @echo.

@@ -1,9 +1,9 @@
 echo Building daemon and qt...
-
+echo $COINFOLDER
 cd $COINFOLDER
 
-./autogen.sh
-if [ ${?} -ne 0 ]; then echo "daemon autogen failed."; read -n 1 -s; exit 1;fi
+#./autogen.sh
+#if [ ${?} -ne 0 ]; then echo "daemon autogen failed."; read -n 1 -s; exit 1;fi
 
 LIBSH=$EWBPATHMSYS/$LIB
 

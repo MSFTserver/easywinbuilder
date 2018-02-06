@@ -30,7 +30,7 @@ tar --atime-preserve -xzvf $DOWNLOAD/protobuf-$PROTOBUF.tar.gz --directory $LIB 
 echo protobuf - gtest dependency [$GTEST]
 unzip -o $DOWNLOAD/$GTEST.zip -d $LIB > /dev/null
 rm -rf $LIB/protobuf-$PROTOBUF/gtest
-mv $LIB/$GTEST $LIB/protobuf-$PROTOBUF/gtest -u
+mv $LIB/googletest-release-1.7.0 $LIB/protobuf-$PROTOBUF/gtest -u
 
 echo pkg-config-lite [$PKGCONFIGFILE]
 unzip -o $DOWNLOAD/$PKGCONFIGFILE -d $LIB > /dev/null
@@ -53,4 +53,5 @@ echo  openssl [$OPENSSL]
 tar --atime-preserve --dereference -xzvf $DOWNLOAD/$OPENSSL.tar.gz --directory $LIB > /dev/null
 
 echo  boost [$BOOST]
-tar --atime-preserve -xzvf $DOWNLOAD/$BOOST.tar.gz --directory $LIB > /dev/null
+#tar --atime-preserve -xzvf $DOWNLOAD/$BOOST.tar.gz --directory $LIB > /dev/null
+7za x -y -o$LIB $DOWNLOAD/$BOOST.7z > /dev/null

@@ -24,15 +24,17 @@ greaterThan(QT_MAJOR_VERSION, 4) {
 #    BOOST_INCLUDE_PATH, BOOST_LIB_PATH, BDB_INCLUDE_PATH,
 #    BDB_LIB_PATH, OPENSSL_INCLUDE_PATH and OPENSSL_LIB_PATH respectively
 
-BOOST_LIB_SUFFIX=-mgw49-1_55
-BOOST_INCLUDE_PATH=C:/Deps/boost_1_55_0
-BOOST_LIB_PATH=C:/Deps/boost_1_55_0/stage/lib
-BDB_INCLUDE_PATH=C:/easybuild/easywinbuilder/lib/db-4.8.30.NC/build_unix
-BDB_LIB_PATH=C:/easybuild/easywinbuilder/lib/db-4.8.30.NC/build_unix
-OPENSSL_INCLUDE_PATH=C:/easybuild/easywinbuilder/lib/openssl-1.0.1b/include
-OPENSSL_LIB_PATH=C:/easybuild/easywinbuilder/lib/openssl-1.0.1b
-#QRENCODE_INCLUDE_PATH=C:/deps/qrencode-3.4.4
-#QRENCODE_LIB_PATH=C:/deps/qrencode-3.4.4/.libs
+BOOST_LIB_SUFFIX=-mgw49-mt-1_55
+BOOST_INCLUDE_PATH=$$(EWBPATH)lib/$$(BOOST)
+BOOST_LIB_PATH=$$(EWBPATH)lib/$$(BOOST)/stage/lib
+BDB_INCLUDE_PATH=$$(EWBPATH)lib/$$(BERKELEYDB)/build_unix
+BDB_LIB_PATH=$$(EWBPATH)lib/$$(BERKELEYDB)/build_unix
+OPENSSL_INCLUDE_PATH=$$(EWBPATH)lib/$$(OPENSSL)/include
+OPENSSL_LIB_PATH=$$(EWBPATH)lib/$$(OPENSSL)
+MINIUPNPC_INCLUDE_PATH=$$(EWBPATH)lib/$$(MINIUPNPC)
+MINIUPNPC_LIB_PATH=$$(EWBPATH)lib/$$(MINIUPNPC)/miniupnpc
+#QRENCODE_INCLUDE_PATH=$$(EWBPATH)lib/qrencode-3.4.4
+#QRENCODE_LIB_PATH=$$(EWBPATH)lib/qrencode-3.4.4/.libs
 
 
 
@@ -127,22 +129,7 @@ contains(USE_UNITTEST, 1) {
     message(Building without UnitTest support)
 }
 
-# use: qmake "USE_UPNP=1" ( enabled by default; default)
-#  or: qmake "USE_UPNP=0" (disabled by default)
-#  or: qmake "USE_UPNP=-" (not supported)
-# miniupnpc (http://miniupnp.free.fr/files/) must be installed for support
-contains(USE_UPNP, -) {
-    message(Building without UPNP support)
-} else {
-    message(Building with UPNP support)
-    count(USE_UPNP, 0) {
-        USE_UPNP=1
-    }
-    DEFINES += USE_UPNP=$$USE_UPNP STATICLIB
-    INCLUDEPATH += $$MINIUPNPC_INCLUDE_PATH
-    LIBS += $$join(MINIUPNPC_LIB_PATH,,-L,) -lminiupnpc
-    win32:LIBS += -liphlpapi
-}
+
 
 # use: qmake "USE_DBUS=1" or qmake "USE_DBUS=0"
 linux:count(USE_DBUS, 0) {
@@ -434,7 +421,7 @@ isEmpty(BOOST_LIB_SUFFIX) {
 }
 
 isEmpty(BOOST_THREAD_LIB_SUFFIX) {
-    win32:BOOST_THREAD_LIB_SUFFIX = _win32$$BOOST_LIB_SUFFIX
+    win32:BOOST_THREAD_LIB_SUFFIX = $$BOOST_LIB_SUFFIX
     else:BOOST_THREAD_LIB_SUFFIX = $$BOOST_LIB_SUFFIX
 }
 
@@ -500,3 +487,21 @@ contains(RELEASE, 1) {
 }
 
 system($$QMAKE_LRELEASE -silent $$_PRO_FILE_)
+
+
+# use: qmake "USE_UPNP=1" ( enabled by default; default)
+#  or: qmake "USE_UPNP=0" (disabled by default)
+#  or: qmake "USE_UPNP=-" (not supported)
+# miniupnpc (http://miniupnp.free.fr/files/) must be installed for support
+contains(USE_UPNP, -) {
+    message(Building without UPNP support)
+} else {
+    message(Building with UPNP support)
+    count(USE_UPNP, 0) {
+        USE_UPNP=1
+    }
+    DEFINES += USE_UPNP=$$USE_UPNP STATICLIB
+    INCLUDEPATH += $$MINIUPNPC_INCLUDE_PATH
+    LIBS += $$join(MINIUPNPC_LIB_PATH,,-L,) -lminiupnpc
+    win32:LIBS += -liphlpapi
+}

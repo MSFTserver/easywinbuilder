@@ -37,12 +37,14 @@ ifndef USE_UPNP
 endif
 ifneq (${USE_UPNP}, -)
  INCLUDEPATHS += -I"${EWBPATH}lib/${MINIUPNPC}"
+ INCLUDEPATHS += -I"${EWBPATH}lib/${MINIUPNPC}/miniupnpc"
  LIBPATHS += -L"${EWBPATH}lib/${MINIUPNPC}"
+ LIBPATHS += -L"${EWBPATH}lib/${MINIUPNPC}/miniupnpc"
  LIBS += -l miniupnpc -l iphlpapi
  DEFS += -DSTATICLIB -DUSE_UPNP=$(USE_UPNP)
 endif
 
-LIBS += -l kernel32 -l user32 -l gdi32 -l comdlg32 -l winspool -l winmm -l shell32 -l comctl32 -l ole32 -l oleaut32 -l uuid -l rpcrt4 -l advapi32 -l ws2_32 -l mswsock -l shlwapi
+LIBS += -l kernel32 -l user32 -l gdi32 -l comdlg32 -l winspool -l winmm -l shell32 -l comctl32 -l ole32 -l oleaut32 -l uuid -l rpcrt4 -l advapi32 -l ws2_32 -l mswsock -lshlwapi
 
 # TODO: make the mingw builds smarter about dependencies, like the linux/osx builds are
 HEADERS = $(wildcard *.h)
@@ -114,8 +116,11 @@ obj/scrypt-x86.o: scrypt-x86.S
 obj/scrypt-x86_64.o: scrypt-x86_64.S
 	$(CXX) -c $(xCXXFLAGS) -MMD -o $@ $<
 
+	
+# 	muss am ende hinzugefügt werden damit coind funktioniert -lshlwapi
+
 buzzcoind.exe: $(OBJS:obj/%=obj/%)
-	g++ $(CFLAGS) $(LDFLAGS) -o $@ $(LIBPATHS) $^ $(LIBS)
+	g++ $(CFLAGS) $(LDFLAGS) -o $@ $(LIBPATHS) $^ $(LIBS) -lshlwapi
 
 clean:
 	-del /Q buzzcoind

@@ -6,7 +6,7 @@
 
 @echo Gather executables
 copy %COINFOLDER%\src\*.exe %COINFOLDER%-%RELEASE%\
-copy %COINFOLDER%\src\qt\*.exe %COINFOLDER%-%RELEASE%\
+copy %COINFOLDER%\release\*.exe %COINFOLDER%-%RELEASE%\
 
 @dir %COINFOLDER%-%RELEASE%
 

@@ -1,5 +1,5 @@
 TEMPLATE = app
-TARGET = DV7Coin-qt
+TARGET = $$(COINNAME)Coin-qt
 VERSION = 1.0.1.0
 INCLUDEPATH += src src/json src/qt
 QT += network

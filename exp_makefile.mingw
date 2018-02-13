@@ -97,7 +97,7 @@ ifeq (${USE_WALLET}, 1)
         obj/walletdb.o
 endif
 
-all: buzzcoind.exe
+all: $(COINNAME)coind.exe
 
 LIBS += $(CURDIR)/leveldb/libleveldb.a $(CURDIR)/leveldb/libmemenv.a
 DEFS += $(addprefix -I,$(CURDIR)/leveldb/include)
@@ -116,14 +116,11 @@ obj/scrypt-x86.o: scrypt-x86.S
 obj/scrypt-x86_64.o: scrypt-x86_64.S
 	$(CXX) -c $(xCXXFLAGS) -MMD -o $@ $<
 
-	
-# 	muss am ende hinzugefügt werden damit coind funktioniert -lshlwapi
-
-buzzcoind.exe: $(OBJS:obj/%=obj/%)
+$(COINNAME)coind.exe: $(OBJS:obj/%=obj/%)
 	g++ $(CFLAGS) $(LDFLAGS) -o $@ $(LIBPATHS) $^ $(LIBS) -lshlwapi
 
 clean:
-	-del /Q buzzcoind
+	-del /Q $(COINNAME)coind
 	-del /Q obj\*
 
 FORCE:

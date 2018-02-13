@@ -1,8 +1,9 @@
-@rem Coin to download - change these for altcoins
-@set COINARCHIVE=3.1.1.tar.gz
-@set COINDOWNLOADPATH=https://github.com/buzzcoin-project/BUZZ/archive/%COINARCHIVE%
-@rem folder within COINARCHIVE
-@set COINFOLDER=BUZZ-3.1.1
+@rem Coin to download - change these for altcoins - its in releases source code
+@set COINARCHIVE=1.0.0.tar.gz
+@set COINDOWNLOADPATH=https://github.com/dv7coin/dv7coin/archive/%COINARCHIVE%
+@rem folder within COINARCHIVE 
+@set COINFOLDER=dv7coin-1.0.0
+@set COINNAME=dv7
 
 @rem MinGW (MSYS)
 @set MINGWDLPATH=https://sourceforge.net/projects/mingw/files/Installer/mingw-get-setup.exe/download

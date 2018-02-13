@@ -10,7 +10,7 @@ if [ ${?} -ne 0 ]; then echo "leveldb failed."; read -n 1 -s; exit 1;fi
 
 cd $EWBPATH
 
-cp exp_buzzcoin.pro $COINFOLDER/buzzcoin.pro
+cp exp_qt.pro $COINFOLDER/qt.pro
 cp exp_makefile.mingw $COINFOLDER/src/makefile.mingw
 
 cd $COINFOLDER/src
@@ -23,7 +23,7 @@ cd $EWBPATH
 cd $COINFOLDER
 export PATH=$PATH:$QTPATH
 
-qmake "USE_IPV6=1" "USE_ASM=1" buzzcoin.pro
+qmake "USE_IPV6=1" "USE_ASM=1" qt.pro
 if [ ${?} -ne 0 ]; then echo "qmake wallet failed."; read -n 1 -s; exit 1;fi
 
 mingw32-make -f Makefile.Release

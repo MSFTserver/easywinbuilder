@@ -1,8 +1,8 @@
 @call set_vars.bat
 @bash patch_files.sh
-@cd %LIB:/=\%
+@cd "%LIB:/=\%"
 @echo miniupnp...
-@cd %MINIUPNPC%\miniupnpc
+@cd "%MINIUPNPC%\miniupnpc"
 @rem mingw32-make is different from normal msys make
 mingw32-make -f Makefile.mingw ADDITIONALCCFLAGS="%ADDITIONALCCFLAGS%"
 @cd ..\..\..

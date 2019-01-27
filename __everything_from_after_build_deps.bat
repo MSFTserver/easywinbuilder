@@ -7,7 +7,7 @@
 @goto end
 
 :error
-@echo Fatal error! Errorlevel: %errorlevel%
+@echo Fatal error! Errorlevel: %ERRORLEVEL%
 
 :end
 @pause

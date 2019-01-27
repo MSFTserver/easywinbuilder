@@ -1,4 +1,4 @@
-@echo EasyWinBuilder v0.7 BUZZ Version (nlz)
+@echo EasyWinBuilder v1.0 for Ravencoin
 @echo.
 @set RUNALL=1
 @echo.
@@ -9,7 +9,7 @@
 @goto end
 
 :error
-@echo Fatal error! Errorlevel: %errorlevel%
+@echo Fatal error! Errorlevel: %ERRORLEVEL%
 @pause
 
 :end

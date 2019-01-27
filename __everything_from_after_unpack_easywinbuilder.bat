@@ -2,6 +2,8 @@
 
 @call 3a_build_boost.bat
 @if errorlevel 1 goto error
+@call 3a_build_python.bat
+@if errorlevel 1 goto error
 @call 3b_run_build_dep.bat
 @if errorlevel 1 goto error
 @call 3c_build_miniupnpc.bat
@@ -15,7 +17,7 @@
 @goto end
 
 :error
-@echo Fatal error! Errorlevel: %errorlevel%
+@echo Fatal error! Errorlevel: %ERRORLEVEL%
 
 :end
 @pause

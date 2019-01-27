@@ -21,4 +21,11 @@
 
 echo.
 echo done
+
+@call 1a_env_update_download.bat
+@if errorlevel 1 goto error
+
+@call 1b_env_update_unpack.bat
+@if errorlevel 1 goto error
+
 @if not "%RUNALL%"=="1" pause

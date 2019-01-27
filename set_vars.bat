@@ -1,9 +1,15 @@
 @rem Coin to download - change these for altcoins - its in releases source code
-@set COINARCHIVE=1.0.0.tar.gz
-@set COINDOWNLOADPATH=https://github.com/dv7coin/dv7coin/archive/%COINARCHIVE%
+@set COINARCHIVE=v0.17.1.tar.gz
+@set COINDOWNLOADPATH=https://github.com/bitcoin/bitcoin/archive/v0.17.1.tar.gz
+@rem https://www.dropbox.com/s/slrs2nhi81tes3s/Ravencoin-sync_update.tar.gz?dl=1
 @rem folder within COINARCHIVE 
-@set COINFOLDER=dv7coin-1.0.0
-@set COINNAME=dv7
+@set COINFOLDER=Bitcoin
+@set COINNAME=bitcoin
+
+@rem compiler options
+@set THREADS=1
+@set HEAP_SIZE=32768
+@set MIN_EXPAND=1
 
 @rem MinGW (MSYS)
 @set MINGWDLPATH=https://sourceforge.net/projects/mingw/files/Installer/mingw-get-setup.exe/download
@@ -11,6 +17,14 @@
 @rem Compiler
 @set MINGW64VERSION=4.9.2
 @set MINGW64FILE=i686-%MINGW64VERSION%-release-posix-dwarf-rt_v4-rev3.7z
+
+@rem Update MinGW tools
+@set WGET_NAME=WGet-Win
+@set WGET_URL=https://www.dropbox.com/s/a61zteo7g1jib9g/%WGET_NAME%.zip?dl=1
+@set UNZIP_NAME=UnZip-Win
+@set UNZIP_URL=https://www.dropbox.com/s/lbzn8pzdbzconzr/%UNZIP_NAME%.zip?dl=1
+@set OPENSSL_NAME=OpenSSL-Win
+@set OPENSSL_URL=https://www.dropbox.com/s/l3bir4a9dyqfien/%OPENSSL_NAME%.zip?dl=1
 
 @rem QT source download
 @set QTVERSIONMAJOR=5.3
@@ -44,13 +58,21 @@
 @set PATH=%MINGW64PATH%/bin;%MSYSPATH%
 
 @rem Dependencies
-@set OPENSSL=openssl-1.0.1b
+@set PYTHON=3.7.2
+@set PYTHONPATH=%EWBPATH%lib/Python-%PYTHON%
+@set OPENSSL=openssl-1.0.1p
 @set BERKELEYDB=db-4.8.30.NC
 @set BOOSTSUBVERSION=55
 @set BOOST=boost_1_%BOOSTSUBVERSION%_0
 @set BOOSTVERSION=1.%BOOSTSUBVERSION%.0
+@set BOOSTPATH=%EWBPATH%lib/%BOOST%
 @set MINIUPNPC=miniupnpc-1.6.20120509
 @set PROTOBUF=2.6.1
+@set SCONSVERSION=3.0.1
+@set SCONSPATH=%EWBPATH%lib/scons-%SCONSVERSION%/script
+@set NSISVERSION=3
+@set NSISSUBVERSION=04
+@set NSISPATH=%EWBPATH%lib/nsis-3.04
 @rem gtest is needed by protobuf
 @set GTEST=release-1.7.0
 @set LIBPNG=libpng-1.6.16
@@ -64,7 +86,6 @@
 
 @rem The following will be set as additional CXXFLAGS and CFLAGS to go towards deterministic builds - no ' or ", space is ok
 @set ADDITIONALCCFLAGS= -fno-guess-branch-probability -frandom-seed=1984 -Wno-unused-variable -Wno-unused-value -Wno-sign-compare -Wno-strict-aliasing
-
 @rem Language Settings - always US
 @set LANG=en_US.UTF8
 @set LC_ALL=en_US.UTF8

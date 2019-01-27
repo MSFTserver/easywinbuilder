@@ -1,4 +1,4 @@
-EasyWinBuilder v1.0 for Ravencoin
+EasyWinBuilder v1.0 for Bitcoin
 ===========================
 Original: https://github.com/phelix/easywinbuilder
 Forked From: https://github.com/buzzcoin-project/BUZZ

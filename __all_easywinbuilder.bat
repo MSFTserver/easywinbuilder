@@ -1,4 +1,4 @@
-@echo EasyWinBuilder v1.0 for Ravencoin
+@echo EasyWinBuilder v1.0 for Bitcoin
 @echo.
 @set RUNALL=1
 @echo.
